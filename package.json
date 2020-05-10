@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "now dev",
-    "next:dev": "next",
+    "now:dev": "now dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start"
   },
@@ -14,8 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "next": "^9.3.6",
-    "next-compose-plugins": "^2.2.0",
-    "next-optimized-images": "^2.6.0",
+    "next-images": "^1.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
