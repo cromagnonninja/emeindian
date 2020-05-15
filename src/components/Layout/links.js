@@ -12,6 +12,14 @@ export default [
     path: "/about",
   },
   {
+    title: "Team",
+    path: "/team",
+  },
+  {
+    title: "Blog",
+    path: "Blog",
+  },
+  {
     title: "Contact",
     path: "/contact",
   },

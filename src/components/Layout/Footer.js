@@ -6,7 +6,7 @@ import PhoneIcon from "../../assets/icons/phone.svg";
 import LogoBW from "../../assets/logo-bw.png";
 
 const FooterFlexContainer = styled.div`
-  height: 30vh;
+  padding: 080px 0;
   background: ${props => props.theme.colors.secondary};
   color: #ffffff60;
   display: flex;
@@ -23,10 +23,26 @@ const FooterContainer = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 1250px) {
+    width: 100%;
+    padding: 0 50px;
+    flex-direction: column;
+  }
 `;
 
 const FooterSection = styled.div`
-  width: ${props => props.width || "32%"};
+  width: ${props => props.swidth || "32%"};
+  @media screen and (max-width: 1200px) {
+    width: 100% !important;
+    margin: 20px 0;
+    &:first-of-type {
+      margin-top: 0;
+    }
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
 `;
 
 const FooterSectionTitle = styled.div`
@@ -94,16 +110,16 @@ export default () => (
   <FooterFlexContainer>
     <FooterBlockContainer>
       <FooterContainer>
-        <FooterSection width="20%">
-          <FooterSectionTitle>Our Products</FooterSectionTitle>
-          {footerLinks.map(({ title, path }) => (
-            <Link href={path}>
+        <FooterSection swidth="20%">
+          <FooterSectionTitle>Our Company</FooterSectionTitle>
+          {footerLinks.map(({ title, path }, i) => (
+            <Link href={path} key={i}>
               <FooterLink>{title}</FooterLink>
             </Link>
           ))}
         </FooterSection>
 
-        <FooterSection width="53%">
+        <FooterSection swidth="53%">
           <FooterSectionTitle>
             Electro Mechanical Enterprises
           </FooterSectionTitle>
@@ -116,9 +132,11 @@ export default () => (
           <FooterItemWithIcon icon={PhoneIcon} iconAlt="Phone">
             +91 9818328823, +91 011 2348234
           </FooterItemWithIcon>
+
+          {/* TODO: Add business hours here */}
         </FooterSection>
 
-        <FooterSection width="25%">
+        <FooterSection swidth="25%">
           <FooterLogo src={LogoBW} alt="Electro Mechanical Enterprises" />
           &copy; Electro Mechanical Enterprises.
           <br />
