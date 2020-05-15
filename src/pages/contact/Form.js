@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const InputContainer = styled.div`
   margin: 25px 0;
@@ -80,24 +82,39 @@ const SubmitBtn = styled.button`
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+  &:disabled {
+    background: #eaeaef;
+    cursor: not-allowed;
+  }
 `;
 
-export default () => (
-  <form>
-    {/* TODO: make it work */}
-    <TextInput
-      name="phone"
-      label="Mobile number"
-      placeholder="+91 XXXX XXX XXX"
-    />
-    <TextInput name="name" label="Name" placeholder="John Doe" />
-    <TextInput
-      name="req"
-      label="Requirement Details"
-      placeholder="Additional information"
-      textarea={true}
-    />
-    {/* TODO: add recaptcha */}
-    <SubmitBtn>Submit requirements</SubmitBtn>
-  </form>
-);
+export default () => {
+  const [recaptchaAccepted, setRecaptchaAccepted] = useState(false);
+
+  return (
+    <form>
+      {/* TODO: make it work */}
+      <TextInput
+        name="phone"
+        label="Mobile number"
+        placeholder="+91 XXXX XXX XXX"
+      />
+      <TextInput name="name" label="Name" placeholder="John Doe" />
+      <TextInput
+        name="req"
+        label="Requirement Details"
+        placeholder="Additional information"
+        textarea={true}
+      />
+      {/* TODO: move site key to .env */}
+      <div style={{ margin: "20px 0" }}>
+        <ReCAPTCHA
+          sitekey="6Ldb7_cUAAAAAISFzdRakIv1wMnHduR3VqPh3tel"
+          onChange={() => setRecaptchaAccepted(true)}
+        />
+      </div>
+      <SubmitBtn disabled={!recaptchaAccepted}>Submit requirements</SubmitBtn>
+    </form>
+  );
+};
