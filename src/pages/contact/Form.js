@@ -14,6 +14,7 @@ const InputLabel = styled.label`
 
 const Input = styled.input`
   display: block;
+  font-family: ${props => props.theme.fonts.body};
   font-size: ${props => props.theme.fontSizes[1]};
   padding: 15px 20px;
   border: 2px solid rgba(91, 113, 120, 0.2);
@@ -34,6 +35,7 @@ const Input = styled.input`
 const TextArea = styled.textarea`
   display: block;
   resize: vertical;
+  font-family: ${props => props.theme.fonts.body};
   font-size: ${props => props.theme.fontSizes[1]};
   padding: 15px 20px;
   border: 2px solid rgba(91, 113, 120, 0.2);
