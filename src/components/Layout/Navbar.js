@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 import links from "./links";
 import LogoColor from "../../assets/logo-color.png";
-import SearchIconImg from "../../assets/icons/search.png";
+import SearchIconImg from "../../assets/icons/search.svg";
 
 const NavbarContainer = styled.div`
   background: ${props => props.theme.colors.mutedSecondary};
@@ -26,47 +26,6 @@ const NavbarLogo = styled.img`
   height: 60%;
   width: auto;
   cursor: pointer;
-`;
-
-const SearchContainer = styled.div`
-  padding: 05px 12px;
-  border: 0.5px solid ${props => props.theme.colors.borderGray};
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  background: #fff;
-
-  /* &:focus-within {
-    border-color: ${props => props.theme.colors.secondary};
-  } */
-`;
-
-const SearchInput = styled.input`
-  font-size: ${props => props.theme.fontSizes[0]};
-  font-family: ${props => props.theme.fonts.body};
-  border: none;
-  width: 400px;
-  padding: 08px 0;
-  color: ${props => props.theme.colors.textLight};
-
-  &:focus,
-  &:active {
-    outline: none;
-  }
-`;
-
-const SearchIconContainer = styled.div`
-  height: 100%;
-  padding-right: 10px;
-  margin-right: 10px;
-  border-right: 2px solid #eaeaef;
-  display: flex;
-  align-items: center;
-`;
-
-const SearchIcon = styled.img`
-  height: calc(${props => props.theme.fontSizes[0]} + 2px);
-  width: auto;
 `;
 
 const Hamburger = styled.div`
@@ -180,6 +139,26 @@ const NavLink = styled.a`
   }
 `;
 
+const SearchIcon = styled.img`
+  height: ${props => props.dim || "25px"};
+  width: ${props => props.dim || "25px"};
+  margin-right: 10px;
+  cursor: pointer;
+`;
+
+const SearchIconContainer = styled.div`
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  margin: 0 20px;
+`;
+
+const NavSearchContainer = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+`;
+
 export default () => {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
@@ -190,34 +169,34 @@ export default () => {
         <NavbarLogo src={LogoColor} alt="Electo Mechanical Enterprises" />
       </Link>
 
-      {/* TODO: Replace with link to search page on mobile */}
-      {/* <SearchContainer>
+      <NavSearchContainer>
+        {/* TODO: Add onclick */}
         <SearchIconContainer>
-          <SearchIcon src={SearchIconImg} alt="Search" />
+          <SearchIcon src={SearchIconImg} alt="Search" dim="20px" />
         </SearchIconContainer>
-        <SearchInput type="text" placeholder="Search for items" />
-      </SearchContainer> */}
-
-      <div>
-        <Hamburger onClick={() => setNavOpen(true)}>
-          <div></div>
-          <div></div>
-          <div></div>
-        </Hamburger>
-
-        <NavLinksContainer open={navOpen}>
-          {links.map(({ title, path }, i) => (
-            <Link href={path} key={i}>
-              <NavLink highlighted={path === router.pathname}>{title}</NavLink>
-            </Link>
-          ))}
-
-          <Close onClick={() => setNavOpen(false)}>
+        <div>
+          <Hamburger onClick={() => setNavOpen(true)}>
             <div></div>
             <div></div>
-          </Close>
-        </NavLinksContainer>
-      </div>
+            <div></div>
+          </Hamburger>
+
+          <NavLinksContainer open={navOpen}>
+            {links.map(({ title, path }, i) => (
+              <Link href={path} key={i}>
+                <NavLink highlighted={path === router.pathname}>
+                  {title}
+                </NavLink>
+              </Link>
+            ))}
+
+            <Close onClick={() => setNavOpen(false)}>
+              <div></div>
+              <div></div>
+            </Close>
+          </NavLinksContainer>
+        </div>
+      </NavSearchContainer>
 
       <style jsx global>{`
         html,

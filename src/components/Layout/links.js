@@ -8,12 +8,12 @@ export default [
     path: "/products",
   },
   {
-    title: "About us",
-    path: "/about",
-  },
-  {
     title: "Team",
     path: "/team",
+  },
+  {
+    title: "About us",
+    path: "/about",
   },
   {
     title: "Blog",
