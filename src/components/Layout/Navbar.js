@@ -23,7 +23,7 @@ const NavbarContainer = styled.div`
 `;
 
 const NavbarLogo = styled.img`
-  height: 60%;
+  height: 6vh;
   width: auto;
   cursor: pointer;
 `;
@@ -159,15 +159,28 @@ const NavSearchContainer = styled.div`
   align-items: center;
 `;
 
+const NavbarTitle = styled.div`
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 20px;
+
+  @media screen and (max-width: 1150px) {
+    display: none;
+  }
+`;
+
 export default () => {
   const [navOpen, setNavOpen] = useState(false);
   const router = useRouter();
 
   return (
     <NavbarContainer>
-      <Link href="/">
-        <NavbarLogo src={LogoColor} alt="Electo Mechanical Enterprises" />
-      </Link>
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Link href="/">
+          <NavbarLogo src={LogoColor} alt="Electo Mechanical Enterprises" />
+        </Link>
+        <NavbarTitle>Electro Mechanical Enterprises</NavbarTitle>
+      </div>
 
       <NavSearchContainer>
         {/* TODO: Add onclick */}
