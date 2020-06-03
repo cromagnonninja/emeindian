@@ -60,6 +60,18 @@ const InfoCell = styled(Cell)`
   }
 `;
 
+const Description = styled.div`
+  font-weight: ${props => props.theme.fontWeights.light};
+  font-size: ${props => props.theme.fontSizes[3]};
+  margin-top: 10px;
+  margin-bottom: 50px;
+
+  @media screen and (max-width: 650px) {
+    font-size: ${props => props.theme.fontSizes[2]};
+    margin-bottom: 30px;
+  }
+`;
+
 export default () => (
   <Layout title="About">
     <Container>

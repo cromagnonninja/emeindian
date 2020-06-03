@@ -17,7 +17,7 @@ export default [
   },
   {
     title: "Blog",
-    path: "Blog",
+    path: "/blog",
   },
   {
     title: "Contact",
