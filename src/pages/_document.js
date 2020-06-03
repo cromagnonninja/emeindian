@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { extractCritical } from "emotion-server";
+import { Global, css } from "@emotion/core";
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -18,6 +19,15 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <Global
+            style={css`
+              * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+              }
+            `}
+          />
           <Main />
           <NextScript />
         </body>

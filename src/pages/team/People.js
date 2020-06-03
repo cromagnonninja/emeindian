@@ -1,9 +1,10 @@
 import styled from "@emotion/styled";
+import { documentToReactComponents } from "../../lib/contentful";
 
 const PeopleContainer = styled.div`
   margin: 50px auto;
   margin-top: 0;
-  max-width: 1000px;
+  max-width: 1200px;
   width: 100%;
 `;
 
@@ -12,17 +13,14 @@ const PeopleFlexContainer = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-
-  @media screen and (max-width: 1000px) {
-    justify-content: space-around;
-  }
+  justify-content: center;
 `;
 
 const PersonContainer = styled.div`
-  width: 300px;
-  padding: 30px;
-  margin: 33.33px 0;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px 10px;
+  margin: 30px;
   border: 2px solid #eaeaef;
   border-radius: 4px;
 `;
@@ -58,26 +56,44 @@ const Description = styled.div`
   /* color: ${props => props.theme.colors.textLight}; */
 `;
 
-const Person = () => (
-  <PersonContainer>
-    <PersonImg src="https://github.com/rauchg.png" />
-    <Name>Guillermo Rauch</Name>
-    <Designation>Chief Engineer</Designation>
-    <Description>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi illum
-      dolorum adipisci.
-    </Description>
-  </PersonContainer>
-);
+const DescriptionP = styled.p`
+  font-size: 0.9rem;
+`;
 
-export default () => (
+const Link = styled.a`
+  font-size: inherit;
+  text-decoration: none;
+  color: ${props => props.theme.secondary};
+`;
+
+const Person = ({ profile }) => {
+  console.log(profile);
+  return (
+    <PersonContainer>
+      <PersonImg
+        src={profile.fields.avatar.fields.file.url}
+        alt={profile.fields.avatar.fields.title}
+      />
+      <Name>{profile.fields.name}</Name>
+      {/* <Designation>Chief Engineer</Designation> */}
+      <Description>
+        {profile.fields.description.content.map(p => {
+          if (p.nodeType === "text") return p.value;
+          if (p.nodeType === "hyperlink")
+            return <Link href={"Asdasd"}>{"Asdasd"}</Link>;
+          return documentToReactComponents(p);
+        })}
+      </Description>
+    </PersonContainer>
+  );
+};
+
+export default ({ team }) => (
   <PeopleContainer>
     <PeopleFlexContainer>
-      {Array(12)
-        .fill("_")
-        .map(() => (
-          <Person />
-        ))}
+      {team.map((p, i) => (
+        <Person key={i} profile={p} />
+      ))}
     </PeopleFlexContainer>
   </PeopleContainer>
 );

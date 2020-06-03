@@ -92,6 +92,7 @@ const NavLinksContainer = styled.div`
     height: 100vh;
     width: 100vw;
     background: rgba(256, 256, 256, 0.93);
+    z-index: 10000000;
 
     display: flex;
     flex-direction: column;
