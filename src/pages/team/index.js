@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { createClient, documentToReactComponents } from "../../lib/contentful";
 import Layout from "../../components/Layout";
 import { H2 } from "../../components/contentful/Heading";
-import People from "./People";
+import People from "../../components/People";
 
 function Team({ teamPage, team }) {
   return (

@@ -2,6 +2,10 @@ import styled from "@emotion/styled";
 
 import MapPinIcon from "../../assets/icons/map-pin-blue.svg";
 import PhoneIcon from "../../assets/icons/phone-blue.svg";
+import TwitterIcon from "../../assets/icons/twitter.svg";
+import FacebookIcon from "../../assets/icons/facebook.svg";
+import LinkedInIcon from "../../assets/icons/linkedin.svg";
+import WhatsAppIcon from "../../assets/icons/whatsapp.svg";
 
 const MapIFrame = styled.iframe`
   width: 100%;
@@ -10,6 +14,7 @@ const MapIFrame = styled.iframe`
 
 const ItemWithIconContainer = styled.div`
   display: flex;
+  align-items: center;
   width: 100%;
   margin: 25px 0;
 `;
@@ -19,6 +24,22 @@ const ItemIconContainer = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+`;
+
+const Icon = styled.img`
+  height: ${props => props.dim || "25px"};
+  width: ${props => props.dim || "25px"};
+
+  margin: 0 5px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const ItemIcon = styled.img`
@@ -63,5 +84,11 @@ export default () => (
     <ItemWithIcon icon={PhoneIcon} iconAlt="Phone">
       +91 9818328823, +91 011 2348234
     </ItemWithIcon>
+    <ItemWithIconContainer>
+      <Icon src={TwitterIcon} alt="Twitter" />
+      <Icon src={FacebookIcon} alt="Facebook" />
+      <Icon dim="20px" src={LinkedInIcon} alt="LinkedIn" />
+      <Icon src={WhatsAppIcon} alt="WhatsApp" />
+    </ItemWithIconContainer>
   </>
 );

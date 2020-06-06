@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { documentToReactComponents } from "../../lib/contentful";
+import { documentToReactComponents } from "../lib/contentful";
 
 const PeopleContainer = styled.div`
   margin: 50px auto;

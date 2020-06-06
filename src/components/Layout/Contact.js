@@ -74,16 +74,16 @@ export default ({ mobile }) => (
       <InfoContainer mobile={true}>
         <Icon src={PhoneIcon} alt="Phone" />
         {/* TODO: Replace with legit numbers */}
-        9818328823, 2348234
+        +91 1204242075, +91 9354004698
       </InfoContainer>
       <InfoContainer mobile={true}>
         <Icon src={ClockIcon} alt="Clock" />
         {/* TODO: Setup hook to change hours based on timezone */}
-        Monday to Friday, 10AM to 8PM IST
+        Mon-Fri, 10AM-8PM IST
       </InfoContainer>
       <InfoContainer>
         <Icon src={CreditCardIcon} alt="Clock" />
-        GSTIN: 929875887284681825
+        GSTIN: 09AFDPB5706L1ZH
       </InfoContainer>
     </LeftContainer>
     <div style={{ display: "flex", alignItems: "center" }}>

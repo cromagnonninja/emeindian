@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import ReCAPTCHA from "react-google-recaptcha";
+import { Message } from "theme-ui";
 
 const InputContainer = styled.div`
   margin: 25px 0;
@@ -91,32 +92,112 @@ const SubmitBtn = styled.button`
   }
 `;
 
+const Error = styled.div`
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #ff0000;
+`;
+
+const Success = styled.div`
+  margin: 20px 0;
+  font-size: 0.9rem;
+  color: #007d00;
+`;
+
 export default () => {
+  const [phone, setPhone] = useState();
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
+  const [message, setMessage] = useState();
+
   const [recaptchaAccepted, setRecaptchaAccepted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async () => {
+    if (submitting || !recaptchaAccepted) return;
+
+    try {
+      setSubmitting(true);
+
+      const res = await (
+        await fetch("/api/contact", {
+          method: "post",
+          body: JSON.stringify({
+            phone,
+            name,
+            email,
+            message,
+            token: recaptchaAccepted,
+          }),
+        })
+      ).json();
+
+      if (res.success) {
+        setSubmitting(false);
+        setError(false);
+        setPhone("");
+        setEmail("");
+        setName("");
+        setMessage("");
+        setSuccess(res.message);
+      } else {
+        setSubmitting(false);
+        setError(res.message);
+      }
+    } catch (e) {
+      setSubmitting(false);
+      setError("An error occurred");
+    }
+  };
 
   return (
     <form>
       {/* TODO: make it work */}
       <TextInput
+        value={phone}
+        onChange={e => setPhone(e.target.value)}
         name="phone"
         label="Mobile number"
-        placeholder="+91 XXXX XXX XXX"
+        placeholder="XXXXXXXXX"
       />
-      <TextInput name="name" label="Name" placeholder="John Doe" />
+      <TextInput
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        name="email"
+        label="Email"
+        placeholder="john@example.com"
+      />
+      <TextInput
+        value={name}
+        onChange={e => setName(e.target.value)}
+        name="name"
+        label="Name"
+        placeholder="John Doe"
+      />
       <TextInput
         name="req"
         label="Requirement Details"
         placeholder="Additional information"
         textarea={true}
+        onChange={e => setMessage(e.target.value)}
+        value={message}
       />
-      {/* TODO: move site key to .env */}
+      {error && <Error>{error}</Error>}
+      {success && <Success>{success}</Success>}
       <div style={{ margin: "20px 0" }}>
         <ReCAPTCHA
           sitekey="6Ldb7_cUAAAAAISFzdRakIv1wMnHduR3VqPh3tel"
-          onChange={() => setRecaptchaAccepted(true)}
+          onChange={value => setRecaptchaAccepted(value)}
         />
       </div>
-      <SubmitBtn disabled={!recaptchaAccepted}>Submit requirements</SubmitBtn>
+      <SubmitBtn
+        disabled={submitting || !recaptchaAccepted}
+        onClick={handleSubmit}
+      >
+        {submitting ? "Submitting" : "Submit"} requirements
+      </SubmitBtn>
     </form>
   );
 };

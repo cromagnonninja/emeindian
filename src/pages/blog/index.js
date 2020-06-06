@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import Layout from "../../components/Layout";
 import ArrowIconImg from "../../assets/icons/arrow.svg";
+import { createClient } from "../../lib/contentful";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import Link from "next/link";
 
 const Container = styled.div`
   max-width: 900px;
@@ -51,6 +54,7 @@ const ReadMore = styled.div`
   background: ${props => props.theme.colors.mutedSecondary};
   color: ${props => props.theme.colors.secondary};
   font-weight: ${props => props.theme.fontWeights.semibold};
+  cursor: pointer;
   padding: 15px;
   text-align: right;
 `;
@@ -66,62 +70,87 @@ const Description = styled.div`
   }
 `;
 
-const ArrowIcon = styled.img`
+export const ArrowIcon = styled.img`
   height: ${props => props.dim || "25px"};
   width: ${props => props.dim || "25px"};
   margin: 0px 10px 0px;
   vertical-align: bottom;
   stroke: ${props => props.theme.colors.secondary};
-  cursor: pointer;
   transform: rotate(180deg);
 `;
 
-export default () => (
-  <Layout title="Blog">
-    <Container>
-      <h1>Blog</h1>
-      <Description>Words from the EME Indian team.</Description>
+export function fmtDate(date) {
+  date = new Date(date);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
-      <BlogContainer>
-        <BlogPost>
-          <BlogTitle>
-            How to Win the Next Election: Popular Environmental Policy
-          </BlogTitle>
-          <ByLine> by Devon Babin | May 15, 2019</ByLine>
-          <BlogText>
-            Canadians are going yo make the environment a key issue in the
-            upcoming federal election and the winning party will have to address
-            three key issues. What does a winning platform look like? Green
-            Infrastructure According to Polly, any winning plotform needs to
-            include...
-          </BlogText>
+  return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+}
 
-          <ReadMore>
-            Read More{" "}
-            <ArrowIcon src={ArrowIconImg} alt="Read More" dim="20px" />
-          </ReadMore>
-        </BlogPost>
-      </BlogContainer>
-      <BlogContainer>
-        <BlogPost>
-          <BlogTitle>
-            How to Win the Next Election: Popular Environmental Policy
-          </BlogTitle>
-          <ByLine> by Devon Babin | May 15, 2019</ByLine>
-          <BlogText>
-            Canadians are going yo make the environment a key issue in the
-            upcoming federal election and the winning party will have to address
-            three key issues. What does a winning platform look like? Green
-            Infrastructure According to Polly, any winning plotform needs to
-            include...
-          </BlogText>
+function BlogPosts({ posts }) {
+  return (
+    <Layout title="Blog">
+      <Container>
+        <h1>Blog</h1>
+        <Description>Words from the EME Indian team.</Description>
 
-          <ReadMore>
-            Read More{" "}
-            <ArrowIcon src={ArrowIconImg} alt="Read More" dim="20px" />
-          </ReadMore>
-        </BlogPost>
-      </BlogContainer>
-    </Container>
-  </Layout>
-);
+        {posts.map((p, i) => {
+          console.log({
+            p,
+            pp: p.fields.content.content.filter(
+              n => n.nodeType === "paragraph",
+            )[0],
+          });
+          return (
+            <BlogContainer key={i}>
+              <BlogPost>
+                <BlogTitle>{p.fields.title}</BlogTitle>
+                <ByLine>
+                  by {p.fields.author} | {fmtDate(p.fields.published)}
+                </ByLine>
+                <BlogText>
+                  {documentToReactComponents(
+                    p.fields.content.content.filter(
+                      n => n.nodeType === "paragraph",
+                    )[0],
+                  )}
+                </BlogText>
+
+                <Link href={`/blog/${p.fields.slug}`}>
+                  <ReadMore>
+                    Read More{" "}
+                    <ArrowIcon src={ArrowIconImg} alt="Read More" dim="20px" />
+                  </ReadMore>
+                </Link>
+              </BlogPost>
+            </BlogContainer>
+          );
+        })}
+      </Container>
+    </Layout>
+  );
+}
+
+BlogPosts.getInitialProps = async ctx => {
+  const client = createClient();
+  const posts = await client.getEntries({
+    content_type: "blogPost",
+    order: "-sys.createdAt",
+  });
+
+  return { posts: posts.items };
+};
+
+export default BlogPosts;
