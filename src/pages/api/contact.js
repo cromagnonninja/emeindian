@@ -1,7 +1,9 @@
 const yup = require("yup");
 const axios = require("axios").default;
 const sg = require("@sendgrid/mail");
-sg.setApiKey(process.env.SENDGRID_KEY);
+sg.setApiKey(
+  "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",
+);
 
 module.exports = async (req, res) => {
   const { name, email, phone, message } =
@@ -55,7 +57,7 @@ To reply to this response, simply reply to this email.
             email: "website@emeindian.com",
             name: "EMEIndian Website",
           },
-          to: process.env.CONTACT_EMAIL,
+          to: "mail@angad.dev",
           subject: `New Contact Form Response from ${name}`,
           html,
           text: html.replace(/<\/?[^>]+\/?>/g, "").trim(),
