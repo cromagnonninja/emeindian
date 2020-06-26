@@ -57,7 +57,7 @@ To reply to this response, simply reply to this email.
             email: "website@emeindian.com",
             name: "EMEIndian Website",
           },
-          to: "mail@angad.dev",
+          to: "emeindian@gmail.com",
           subject: `New Contact Form Response from ${name}`,
           html,
           text: html.replace(/<\/?[^>]+\/?>/g, "").trim(),
