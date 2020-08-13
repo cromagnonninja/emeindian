@@ -188,7 +188,7 @@ export default () => {
       {success && <Success>{success}</Success>}
       <div style={{ margin: "20px 0" }}>
         <ReCAPTCHA
-          sitekey="6LeqLb4ZAAAAAMEMWeTWnWQa-SMsl4wyYUlZLaBR"
+          sitekey="6LeqLb4ZAAAAAHz_dDP-zfHNuHrnE9QX1vy3nNWd"
           onChange={value => setRecaptchaAccepted(value)}
         />
       </div>
