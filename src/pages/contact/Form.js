@@ -193,7 +193,7 @@ export default () => {
         />
       </div> */}
       <SubmitBtn
-        disabled={submitting} 
+        // disabled={submitting} 
         // || !recaptchaAccepted
         onClick={handleSubmit}
       >
