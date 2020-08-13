@@ -77,12 +77,12 @@ export default () => (
       tabindex="0"
     />
     <ItemWithIcon icon={MapPinIcon} iconAlt="Map Pin">
-      B-75, Industrial Area, Phase II, Phool Mandi, Sector 88, Noida-201305,
+      B-75, Industrial Area, Phase II, Near Phool Mandi, Sector 88, Noida-201305,
       Uttar Pradesh, India
     </ItemWithIcon>
 
     <ItemWithIcon icon={PhoneIcon} iconAlt="Phone">
-      +91 9818328823, +91 011 2348234
+      +91 9868120599, +91 0120 4242075 
     </ItemWithIcon>
     <ItemWithIconContainer>
       <Icon src={TwitterIcon} alt="Twitter" />
