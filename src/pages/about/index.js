@@ -178,10 +178,6 @@ export default () => (
             <HeaderCell>Statutory Profile</HeaderCell>
           </Row>
           <Row>
-            <LabelCell>DGFT / IE Code</LabelCell>
-            <InfoCell>0502010291</InfoCell>
-          </Row>
-          <Row>
             <LabelCell>Tan No.</LabelCell>
             <InfoCell>MRTV0*****</InfoCell>
           </Row>
@@ -203,17 +199,6 @@ export default () => (
           times.”
         </strong>
       </p>
-
-      <h1>Our Certification</h1>
-      <p>
-        We are an ISO 9001:2008 Certified organization (Valid till: April 23rd
-        2018).
-      </p>
-      <img
-        src={Certificate}
-        alt="Certificate"
-        style={{ height: "300px", width: "auto" }}
-      />
 
       <h1></h1>
     </Container>
