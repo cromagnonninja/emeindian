@@ -59,6 +59,6 @@ export default ({ title, gif, products }) => (
         </HeaderContent>
       </HeaderContentContainer>
     </Header>
-    <ProductsContainer>ashjdlkasjdlk</ProductsContainer>
+    <ProductsContainer>List of products</ProductsContainer>
   </div>
 );
