@@ -54,10 +54,10 @@ To reply to this response, simply reply to this email.
       sg.send(
         {
           from: {
-            email: "website@emeindian.com",
+            email: "bhanubhandari99@gmail.com",
             name: "EMEIndian Website",
           },
-          to: "emeindian@gmail.com",
+          to: "bhanubhandari280@gmail.com",
           subject: `New Contact Form Response from ${name}`,
           html,
           text: html.replace(/<\/?[^>]+\/?>/g, "").trim(),
