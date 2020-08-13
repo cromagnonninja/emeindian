@@ -116,7 +116,7 @@ export default () => {
   const [success, setSuccess] = useState(false);
 
   const handleSubmit = async () => {
-    if (submitting || !recaptchaAccepted) return;
+    if (submitting) return;
 
     try {
       setSubmitting(true);
@@ -128,8 +128,7 @@ export default () => {
             phone,
             name,
             email,
-            message,
-            token: recaptchaAccepted,
+            message
           }),
         })
       ).json();
