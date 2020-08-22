@@ -52,8 +52,7 @@ export default () => (
           Tell us about your requirements and we will get back to you with the
           best quotes.
         </Description>
-
-        <Form />
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5iWcYC5rxk5TXnkFLh2IE7w6t24JkftkLgE-miJQcZ5YGYQ/viewform?embedded=true" width="640" height="1019" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
       </Side>
     </Container>
   </Layout>

@@ -185,12 +185,6 @@ export default () => {
       />
       {error && <Error>{error}</Error>}
       {success && <Success>{success}</Success>}
-      {/* <div style={{ margin: "20px 0" }}>
-        <ReCAPTCHA
-          sitekey=""
-          onChange={value => setRecaptchaAccepted(value)}
-        />
-      </div> */}
       <SubmitBtn
         // disabled={submitting} 
         // || !recaptchaAccepted
