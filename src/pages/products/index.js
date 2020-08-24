@@ -5,7 +5,7 @@ import { createClient, documentToReactComponents } from "../../lib/contentful";
 import { H2 } from "../../components/contentful/Heading";
 import People from "../../components/People";
 
-function Products({ productsPage, product }) {
+function Product({ productsPage, product }) {
   return (
     <Layout title="Product">
       <Category
