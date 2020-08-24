@@ -11,21 +11,6 @@ module.exports = async (req, res) => {
 
   console.log({ name, email, phone, message, token: req.body.token });
 
-  // const { data } = await axios.post(
-  //   `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.SITE_SECRET}&response=${req.body.token}`,
-  //   {
-  //     secret: process.env.SITE_SECRET,
-  //     response: req.body.token,
-  //     token: req.body.token,
-  //   },
-  // );
-
-  // console.log(data);
-
-  // if (!data.success) {
-  //   return res.json({ success: false, message: "Recaptcha failed" });
-  // }
-
   yup
     .object()
     .shape({
