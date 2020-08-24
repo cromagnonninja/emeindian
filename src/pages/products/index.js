@@ -12,7 +12,7 @@ function Product({ productsPage, product }) {
       title="Test"
       gif="url('http://www.schelt.in/images/banner/wea.gif')"
       />
-      {documentToReactComponents(teamPage.fields.content)}
+      {documentToReactComponents(productsPage.fields.content)}
       <H2 style={{ marginBottom: 0, marginTop: "70px" }}>Best products available here!</H2>
       <People product={product}/>
     </Layout>
