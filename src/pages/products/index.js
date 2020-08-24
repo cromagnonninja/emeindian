@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import Layout from "../../components/Layout";
-import Category from "./Category";
 import { createClient, documentToReactComponents } from "../../lib/contentful";
 import { H2 } from "../../components/contentful/Heading";
 import People from "../../components/People";
@@ -14,7 +13,7 @@ function Product({ productsPage, product }) {
       />
       {documentToReactComponents(productsPage.fields.content)}
       <H2 style={{ marginBottom: 0, marginTop: "70px" }}>Best products available here!</H2>
-      <People product={product}/>
+      {/* <People product={product}/> */}
     </Layout>
   );
 }
@@ -32,7 +31,6 @@ Product.getInitialProps = async ctx => {
   const client = createClient();
   const productsPage = await client.getEntry("5tCslA3aju6nKeLGV97lEb");
   const products = await client.getEntries({ content_type: "product" });
-
   return { productsPage, product: products.items || [] };
 };
 
