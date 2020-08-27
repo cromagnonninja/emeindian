@@ -5,7 +5,7 @@ import { H2 } from "../../components/contentful/Heading";
 import People from "../../components/People";
 import Category from "./Category"
 
-function Product({ productsPage, product }) {
+function Product({ productsPageBG, productsPageContent }) {
   return (
     <Layout title="Product">
       <Category
