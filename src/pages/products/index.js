@@ -31,7 +31,7 @@ function Product({ productsPage, product }) {
 Product.getInitialProps = async ctx => {
   const client = createClient();
   const productsPage = await client.getEntry("5tCslA3aju6nKeLGV97lEb");
-  const products = await client.getEntries({ content_type: "product" });
+  const products = await client.getContentType({ content_type: "product" });
   return { productsPage, product: products.items || [] };
 };
 
