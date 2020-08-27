@@ -9,11 +9,11 @@ function Product({ productsPage, product }) {
   return (
     <Layout title="Product">
       <Category
-      title="Test"
+      title="Best Products Available Here!"
       gif="url('http://www.schelt.in/images/banner/wea.gif')"
       />
-      {documentToReactComponents(productsPage.fields.content)}
-      <H2 style={{ marginBottom: 0, marginTop: "70px" }}>Best products available here!</H2>
+      {documentToReactComponents(productsPageBG.fields.content)}
+      {documentToReactComponents(productsPageContent.fields.content)}
       {/* <People product={product}/> */}
     </Layout>
   );
