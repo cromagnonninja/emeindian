@@ -13,9 +13,7 @@ function Product({ productsPageBG, productsPageContent }) {
       gif="url('http://www.schelt.in/images/banner/wea.gif')"
       />
       {documentToReactComponents(productsPageBG.fields.content)}
-      {documentToReactComponents(productsPageContent.fields.content)}
-      {/* <People product={product}/> */}
-    </Layout>
+      </Layout>
   );
 }
 
@@ -31,8 +29,7 @@ function Product({ productsPageBG, productsPageContent }) {
 Product.getInitialProps = async ctx => {
   const client = createClient();
   const productsPageBG = await client.getEntry("5tCslA3aju6nKeLGV97lEb");
-  const productsPageContent = await client.getEntry("75vOKvDvXajCxGWfPljNgW");
-  return {productsPageBG, productsPageContent};
+  return {productsPageBG};
 };
 
 export default Product;
