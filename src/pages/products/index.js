@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import { createClient, documentToReactComponents } from "../../lib/contentful";
 import { H2 } from "../../components/contentful/Heading";
 import Category from "./Category"
+import People from "../../components/People";
 
 function Product({ productsPageBG, products}) {
   return (
