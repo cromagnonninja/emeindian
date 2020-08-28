@@ -82,10 +82,10 @@ const Person = ({ profile }) => {
   );
 };
 
-export default ({ team }) => (
+export default ({ products }) => (
   <PeopleContainer>
     <PeopleFlexContainer>
-      {team.map((p) => (
+      {products.map((p) => (
         <Person profile={p} />
       ))}
     </PeopleFlexContainer>
