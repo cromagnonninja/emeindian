@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import Layout from "../../components/Layout";
 import { createClient, documentToReactComponents } from "../../lib/contentful";
 import { H2 } from "../../components/contentful/Heading";
-import People from "../../components/People";
 import Category from "./Category"
 
 function Product({ productsPageBG, productsPageContent }) {
