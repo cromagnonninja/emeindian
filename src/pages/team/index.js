@@ -19,7 +19,6 @@ Team.getInitialProps = async ctx => {
   const client = createClient();
   const teamPage = await client.getEntry("7jsSQgzqachOdhKVizCxT6");
   const teamMembers = await client.getEntries({ content_type: "teamMember" });
-
   return { teamPage, team: teamMembers.items || [] };
 };
 
