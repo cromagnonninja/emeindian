@@ -85,8 +85,8 @@ const Person = ({ profile }) => {
 export default ({ team }) => (
   <PeopleContainer>
     <PeopleFlexContainer>
-      {team.map((p, i) => (
-        <Person key={i} profile={p} />
+      {team.map((p) => (
+        <Person profile={p} />
       ))}
     </PeopleFlexContainer>
   </PeopleContainer>
