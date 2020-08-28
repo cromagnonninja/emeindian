@@ -72,11 +72,14 @@ const Person = ({ profile }) => {
     <PersonContainer>
       <PersonImg
         src={profile.fields.avatar.fields.file.url}
+        alt={profile.fields.avatar.fields.title}
       />
       <Name>{profile.fields.name}</Name>
       <Description>
         {profile.fields.description.content.map(p => {
           if (p.nodeType === "text") return p.value;
+          if (p.nodeType === "hyperlink")
+            return <Link href={"Asdasd"}>{"Asdasd"}</Link>;
           return documentToReactComponents(p);
         })}
       </Description>
