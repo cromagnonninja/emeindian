@@ -92,8 +92,7 @@ export default ({ products }) => (
     {/* {products.map((p, i) => (
         <Person key={i} profile={p} />
       ))} */}
-    {console.log(products[1].fields.name)};
-    {console.log(products[1].field.avatar.fields.file.url)};
+    {console.log(products)}
     </PeopleFlexContainer>
   </PeopleContainer>
 );
