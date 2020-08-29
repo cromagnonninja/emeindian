@@ -75,7 +75,12 @@ const Person = ({ profile }) => {
       />
       <Name>{profile.fields.name}</Name>
       <Description>
-        {profile.fields.description.content.value}
+        {profile.fields.description.content.map(p => {
+          if (p.nodeType === "text") return p.value;
+          if (p.nodeType === "hyperlink")
+            return <Link href={"Asdasd"}>{"Asdasd"}</Link>;
+          return documentToReactComponents(p);
+        })}
       </Description>
     </PersonContainer>
   );
