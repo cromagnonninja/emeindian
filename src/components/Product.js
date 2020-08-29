@@ -85,7 +85,6 @@ const Person = ({ profile }) => {
 export default ({ products }) => (
   <PeopleContainer>
     <PeopleFlexContainer>
-        <Person profile={products} />
     </PeopleFlexContainer>
   </PeopleContainer>
 );
