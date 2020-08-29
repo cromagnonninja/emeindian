@@ -67,7 +67,6 @@ const Link = styled.a`
 `;
 
 const Person = ({ profile }) => {
-  console.log(profile);
   return (
     <PersonContainer>
       <PersonImg
@@ -83,8 +82,11 @@ const Person = ({ profile }) => {
 };
 
 export default ({ products }) => (
-  <PeopleContainer>
+    <PeopleContainer>
     <PeopleFlexContainer>
+    {products.map((p, i) => (
+        <Person key={i} profile={p} />
+      ))}
     </PeopleFlexContainer>
   </PeopleContainer>
 );
