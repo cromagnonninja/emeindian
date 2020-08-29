@@ -21,8 +21,7 @@ function Products({ productsPageBG, products}) {
 Products.getInitialProps = async ctx => {
   const client = createClient();
   const productsPageBG = await client.getEntry("5tCslA3aju6nKeLGV97lEb");
-  const products = await client.getEntries({ content_type: "productID" });
-  return {productsPageBG, product: products.items || [] };
+  return {productsPageBG};
 };
 
 export default Products;
