@@ -67,6 +67,7 @@ const Link = styled.a`
 `;
 
 const Person = ({ profile }) => {
+  console.log(profile);
   return (
     <PersonContainer>
       <PersonImg
