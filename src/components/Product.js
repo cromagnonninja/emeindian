@@ -89,9 +89,14 @@ const Person = ({ profile }) => {
 export default ({ products }) => (
     <PeopleContainer>
     <PeopleFlexContainer>
-    {products.map((p, i) => (
+    {/* {products.map((p, i) => (
         <Person key={i} profile={p} />
-      ))}
+      ))} */}
+    {console.log(products[0].fields.avatar.fields.file.url)};
+    {console.log(products[0].fields.name)};
+    {console.log(products[1].fields.name)};
+    {console.log(products[0].fields.description.content.value)};
+    {console.log(products[1].field.avatar.fields.file.url)};
     </PeopleFlexContainer>
   </PeopleContainer>
 );
