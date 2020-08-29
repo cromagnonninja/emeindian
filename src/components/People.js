@@ -90,7 +90,6 @@ const Person = ({ profile }) => {
 export default ({ team }) => (
   <PeopleContainer>
     <PeopleFlexContainer>
-      console.log(team)
       {team.map((p, i) => (
         <Person key={i} profile={p} />
       ))}
